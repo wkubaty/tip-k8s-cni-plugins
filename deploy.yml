@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - name: ubuntu
+        image: wkubaty/tip
+        command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+      nodeSelector:
+        kubernetes.io/hostname: worker1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu2
+  template:
+    metadata:
+      labels:
+        app: ubuntu2
+    spec:
+      containers:
+      - name: ubuntu
+        image: wkubaty/tip
+        command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+      nodeSelector:
+        kubernetes.io/hostname: worker2
