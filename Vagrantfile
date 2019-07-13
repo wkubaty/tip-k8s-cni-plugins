@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell", privileged: false, inline: "echo 'plugin: Flannel'"
       c.vm.provision :shell, path: 'flannel-master-conf.sh', privileged: false
     end
-    c.vm.provision "file", source: "deploy.yml", destination: "/home/vagrant/deploy-ubuntu.yml"
+    c.vm.provision "file", source: "deploy.yml", destination: "/home/vagrant/deploy.yml"
   end
 
   config.vm.define "worker1" do |c|
@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
       c.vm.network "private_network", ip: "172.16.1.102"
       c.vm.provision :shell, path: 'worker-conf.sh'
   end
-  
+
   config.vm.provision "shell", path: 'config.sh'
   
 end
