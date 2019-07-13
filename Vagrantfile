@@ -39,5 +39,6 @@ Vagrant.configure("2") do |config|
       c.vm.provision :shell, path: 'worker-conf.sh'
   end
   
+  config.vm.provision "shell", path: 'config.sh'
   
 end
