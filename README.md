@@ -7,6 +7,9 @@ This Vagrantfile will create three VMs with Kubernetes cluster on it. Communicat
 * Source: [https://github.com/hashicorp/vagrant](https://github.com/hashicorp/vagrant)
 
 ### Clone repo
+```
+git clone https://github.com/wkubaty/tip-k8s-cni-plugins.git
+```
 
 ### Type:
 ```
@@ -29,7 +32,7 @@ vagrant ssh <VM>
 ```
 where VM is one of: master, worker1, worker2
 
-Go to master and deploy some ubuntu containers to workers:
+Go to master and deploy some ubuntu containers on workers:
 ```
 kubectl apply -f deploy.yml
 ```
@@ -48,6 +51,11 @@ Ssh on worker with deployed nginx and check out iptables:
 ```
 sudo iptables -L
 ```
+or 
+```
+sudo iptables-save
+```
+
 ### Clean up
 After all experiments type:
 ```
